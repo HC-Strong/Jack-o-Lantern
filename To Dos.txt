@@ -1,0 +1,9 @@
+Currently, the mousemove event handler draws the carving line, as well as the carving line being drawn as part of the animation. So while the animation is running, the carving is drawn twice. Can't be good for performance. But I need the animation carving while the animation is running and the non-animation carving while it's not, so I can't easily fix this. I could either make the animation run all the time, but that seems wasteful, or I could have the mousemove event handler check if it's animating before drawing.
+	I did that second (having the line only drawn if it's not animating, but it doesn't seem to make much difference and idk if it's worth it so something to think about. See "isAnimating" var
+
+--------------------
+
+would like to redo object literals used for falling pieces to make classes with the needed properties
+be sure to remove commments referng to it as object literal when I make that change, since i might get code review from Rohan
+These object literals are also used for the fallen pieces
+could I maybe use classes for all pieces? I don't think it would actually help for the static pieces, but maybe...
