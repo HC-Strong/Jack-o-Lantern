@@ -40,7 +40,7 @@ let nightJack = {
   stem : "#4f3420",
   inside : "#fff700",
   carveLine : "#4f3420",
-  blur : 75
+  blur : 110
 };
 
 let jackOLantern = {
@@ -269,6 +269,27 @@ function drawLine(context, x1, y1, x2, y2) {
 
 // Draws Pumpkin
 function drawPumpkin(context) {
+  // Pumpkin stem
+    context.beginPath();
+    context.strokeStyle = jackOLantern.colors.stem;
+    context.lineWidth = jackOLantern.lineWidth;
+    let centerX = jackOLantern.positionX +10;
+    let stemWidth = 45;
+    let stemBase = jackOLantern.positionY-jackOLantern.height/2;
+    let stemLength = 75;
+    let overlap = 5;
+    let stemCut = stemWidth * Math.sqrt( 2 )/2;
+    let widthScale = 0.7;
+
+    context.moveTo(centerX-stemWidth, stemBase + overlap);
+    context.lineTo(centerX+stemLength*widthScale, stemBase-stemLength);
+    context.lineTo(centerX+stemLength+stemCut*widthScale, stemBase-stemLength+stemCut);
+    context.lineTo(centerX+stemWidth, stemBase+overlap);
+    context.stroke();
+    context.closePath();
+    context.fillStyle = jackOLantern.colors.stem;
+    context.fill();
+
   // Pumpkin base
   context.beginPath();
   context.ellipse(
@@ -282,18 +303,7 @@ function drawPumpkin(context) {
       jackOLantern.width/3, jackOLantern.height/2, 0.35, 0, Math.PI*2);
   context.fillStyle = jackOLantern.colors.skin;
   context.fill();
-// Pumpkin stem
-  context.beginPath();
-  context.strokeStyle = jackOLantern.colors.stem;
-  context.lineWidth = jackOLantern.lineWidth;
-  context.moveTo(jackOLantern.positionX, jackOLantern.positionY-jackOLantern.height/2);
-  context.lineTo(jackOLantern.positionX+50, jackOLantern.positionY-jackOLantern.height/2-50);
-  context.lineTo(jackOLantern.positionX+50+10, jackOLantern.positionY-jackOLantern.height/2-50+10);
-  context.lineTo(jackOLantern.positionX+20, jackOLantern.positionY-jackOLantern.height/2+1);
-  context.stroke();
-  context.closePath();
-  context.fillStyle = jackOLantern.colors.stem;
-  context.fill();
+
 }
 
 drawPumpkin(context, jackOLantern);
